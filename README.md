@@ -20,7 +20,8 @@ Width: This column represents the width of the fish. Like the other numerical va
 
 ![Screenshot from 2024-03-17 18-15-30](https://github.com/princedalmet/Lab_4_FISHMARKET/assets/99526815/0700fc0b-94fb-41c4-9542-b62b369d251e)
 
-![Screenshot from 2024-03-17 17-49-37](https://github.com/princedalmet/Lab_4_FISHMARKET/assets/99526815/e0723142-5c95-47bb-bca2-a64bd38eea65)
+![image](https://github.com/kunalkrishan19/Lab4-fish-prediction/assets/145516112/3dc43e12-916b-4dc0-94e9-e6d7fb01042d)
+
 
 
 
