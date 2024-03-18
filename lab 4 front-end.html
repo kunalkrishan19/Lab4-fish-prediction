@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Market Prediction</title>
+    <style>
+        body {
+            background: aqua;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #121212;
+            border-radius: 5px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .input-container {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        
+        input[type="text"],
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #prediction-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://thecounter.org/wp-content/uploads/2020/04/seafood-market-fisherman-covid-19-coronavirus-april-2020-scaled.jpg" alt="Fish Image" style="display: block; margin: auto; width: 500px;">
+        <h1>Fish Market Prediction</h1>
+        <div class="input-container">
+            <label for="species">Species:</label>
+            <input type="text" id="species" placeholder="Enter species">
+        </div>
+        <div class="input-container">
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" placeholder="Enter weight">
+        </div>
+        <div class="input-container">
+            <label for="length">Length:</label>
+            <input type="number" id="length" placeholder="Enter length">
+        </div>
+        <div class="input-container">
+            <button onclick="predict()">Predict</button>
+        </div>
+        <div id="prediction-result"></div>
+    </div>
+    <script>
+        function predict() {
+            var species = document.getElementById('species').value;
+            var weight = parseFloat(document.getElementById('weight').value);
+            var length = parseFloat(document.getElementById('length').value);
+        
+            // Make a request to backend server endpoint
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ species: species, weight: weight, length: length })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-result').innerText = 'Predicted Weight: ' + data.prediction;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
